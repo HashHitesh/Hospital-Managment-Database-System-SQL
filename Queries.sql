@@ -30,3 +30,5 @@ select e.Emp_ID, ec.Emp_Name
 from Employee e natural join e_contacts ec 
 where Emp_Type = "Doctor" and  Emp_DOR is not null and FLOOR(DATEDIFF(Emp_DOR, Emp_DOJ)/365) >2;
 
+
+
