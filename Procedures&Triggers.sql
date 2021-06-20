@@ -63,5 +63,37 @@ CALL PatientAdmission("Betty Adams", "Male", "1997-09-10", " 15, Al Barsha North
 
 
 
+-- TRIGGERS
+
+--Trigger Name: update_Medical_Suplies_Reqd
+--It updates the stock reqd in medical_supplies_reqd table
+delimiter //
+create trigger update_Medical_Suplies_Reqd
+after update on Medical_Supplies
+for each row
+begin
+if new.Equipment_ID is not null then
+ update Medical_Supplies_Reqd
+        set Stock_Reqd = new.stock 
+        where Equip_ID = new.Equipment_ID;
+end if;
+end //
+delimiter ;
+
+
+-- Trigger Name: update_2_Medical_Suplies_Reqd
+--It inserts new equip id in medical_supplies_reqd as per insertion in medical_supplies
+delimiter //
+create trigger update_2_Medical_Suplies_Reqd
+after insert on Medical_Supplies
+for each row
+begin
+if new.Equipment_ID is not null then
+ insert into Medical_Supplies_Reqd 
+	values (new.Equipment_ID,0);
+end if;
+end //
+delimiter ;
+
 
 
