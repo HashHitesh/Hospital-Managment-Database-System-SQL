@@ -265,3 +265,6 @@ INSERT INTO Medical_Supplies VALUES
 (203,"Master Card","Pending",3000,3),
 (204,"Medical Insurance","Success",20000,4),
 (205,"Cash","Success",700,5);
+
+
+
